@@ -1,3 +1,5 @@
+//
+
 $rg = Get-AzureRMResourceGroup
 
 #Deploy the Vnet
