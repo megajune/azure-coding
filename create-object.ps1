@@ -3,7 +3,7 @@
 
 $rg = Get-AzureRMResourceGroup
 
-$JSON = Get-Content -Path ./05-network-parameters.json | ConvertFrom-Json
+$JSON = Get-Content -Path 05-network-parameters.json | ConvertFrom-Json
 
 #Begin gathering parameters
 
