@@ -9,3 +9,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $rg.ResourceGroupName -Template
 
 
 $JSON = Get-Content -Path ./05-network-parameters.json | ConvertFrom-Json
+
+
+
+git clone https://github.com/megajune/azure-coding/
