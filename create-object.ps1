@@ -3,17 +3,21 @@
 
 $rg = Get-AzureRMResourceGroup
 
+$JSON = Get-Content -Path ./05-network-parameters.json | ConvertFrom-Json
+
 #Begin gathering parameters
-if (! $args[0] ){
-    Write-Output "No input was provided."
-    $envname = Read-Host "Enter an environment abbreviation."
-    }
-else {
-    $envname = $arg1
-}
 
+$tier=$JSON.parameters.tier
+$virtualNetworkName=$JSON.parameters.virtualNetworkName
+$vnetAddressPrefix=$JSON.parameters.vnetAddressPrefix
+$bastionAddressPrefix=$JSON.parameters.bastionAddressPrefix
+$azureFirewallSubnetPrefix=$JSON.parameters.azureFirewallSubnetPrefix
+$WorkLoadSubnetPrefix=$JSON.parameters.WorkLoadSubnetPrefix
+$PrivateFirewallIP=$JSON.parameters.PrivateFirewallIP
 
-Write-Host "$envname"
+Write-Host "The following network is about to be generated:"
+Write-Host "Tier level " $tier
+
 
 #Deploy the Vnet
 
