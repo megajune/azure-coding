@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "tier": {
+        "value": "webapp-"
+      },
+      "virtualNetworkName": {
+        "value": "webapp-vnet"
+      },
+      "vnetAddressPrefix": {
+        "value": "10.10.0.0/24"
+      },
+      "bastionAddressPrefix": {
+        "value": "10.10.0.64/26"
+      },
+      "azureFirewallSubnetPrefix": {
+        "value": "10.10.0.0/26"
+      },
+      "WorkLoadSubnetPrefix": {
+        "value": "10.10.0.128/26"
+      }
+      ,
+      "PrivateFirewallIP": {
+        "value": "10.10.0.4"
+      }
+    }
+  }
