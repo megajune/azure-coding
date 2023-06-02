@@ -5,14 +5,13 @@ $rg = Get-AzureRMResourceGroup
 
 #Begin gathering parameters
 if (! $args[0] ){
-    Write-Output "This empty"
-    $envname = Read-Host "Enter an environment abbreviation"
+    Write-Output "No input was provided."
+    $envname = Read-Host "Enter an environment abbreviation."
     }
 else {
     $envname = $arg1
 }
 
-#$envname = Read-Host "Enter a environment abbreviation"
 
 Write-Host "$envname"
 
