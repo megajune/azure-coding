@@ -1,5 +1,4 @@
 //This deployment template is disallowed by policy in my dev environment. However, it should work with a little tuning.
-//Adding a line
 
 param tier string
 
