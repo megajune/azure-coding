@@ -15,9 +15,14 @@ $azureFirewallSubnetPrefix=($JSON.parameters.azureFirewallSubnetPrefix).value
 $WorkLoadSubnetPrefix=($JSON.parameters.WorkLoadSubnetPrefix).value
 $PrivateFirewallIP=($JSON.parameters.PrivateFirewallIP).value
 
-Write-Host "The following network is about to be generated:"
-Write-Host "Tier level " $tier
-
+Write-Host "The following environment is about to be generated:"
+Write-Host "VNET/Tier prefix " $tier " "
+Write-Host "VNET Name " $virtualNetworkName " "
+Write-Host "Subnet prefix " $vnetAddressPrefix
+Write-Host "Bastion subnet address space " $bastionAddressPrefix
+Write-Host "Azure firewall subnet address space " $azureFirewallSubnetPrefix
+Write-Host "Workload subnet address space " $WorkLoadSubnetPrefix
+Write-Host "(Informational) Workload subnet address space " $PrivateFirewallIP
 
 #Deploy the Vnet
 
