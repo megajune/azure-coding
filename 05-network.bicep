@@ -25,13 +25,10 @@ param infraIpGroupName string = '${tier}infra-ipgroup-${uniqueString(resourceGro
 param workloadIpGroupName string = '${tier}workload-ipgroup-${uniqueString(resourceGroup().id)}'
 param firewallPolicyName string = '${tier}${firewallName}-firewallPolicy'
 
-//var vnetAddressPrefix = 'vnetAddressPrefix'
 param vnetAddressPrefix string
-//var azureFirewallSubnetPrefix = '10.10.0.0/26'
 param azureFirewallSubnetPrefix string
-//var PrivateFirewallIP = '10.10.0.4'
 param PrivateFirewallIP string
-param WorkLoadSubnetPrefix string //= '10.10.0.128/26'
+param WorkLoadSubnetPrefix string
 var WorkLoadSubnetName = 'WorkLoadSubnet'
 var routeTableName = '${tier}routes'
 var routeTableId = resourceId('Microsoft.Network/routeTables', routeTableName)
@@ -166,6 +163,24 @@ resource applicationRuleCollectionGroup 'Microsoft.Network/firewallPolicies/rule
               infraIpGroup.id
             ]
           }
+          {
+            ruleType: 'ApplicationRule'
+            name: 'Update-Ubuntu'
+            protocols: [
+              {
+                protocolType: 'Https'
+                port: 443
+              }
+            ]
+            targetFqdns: [
+              '*.ubuntu.com'
+            ]
+            terminateTLS: false
+            sourceIpGroups: [
+              workloadIpGroup.id
+              infraIpGroup.id
+            ]
+          }
         ]
       }
       {
@@ -244,9 +259,6 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         properties: {
           addressPrefix: WorkLoadSubnetPrefix
           privateEndpointNetworkPolicies: 'Enabled'
-          //routeTable:{
-          //  id: routeTableId // assign the route table
-          //}
         }
       }
       {

@@ -22,7 +22,7 @@ Write-Host "Subnet prefix " $vnetAddressPrefix
 Write-Host "Bastion subnet address space " $bastionAddressPrefix
 Write-Host "Azure firewall subnet address space " $azureFirewallSubnetPrefix
 Write-Host "Workload subnet address space " $WorkLoadSubnetPrefix
-Write-Host "(Informational) Workload subnet address space " $PrivateFirewallIP
+Write-Host "Firewall Private IP address " $PrivateFirewallIP
 
 #Deploy the Vnet
 
