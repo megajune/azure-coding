@@ -7,13 +7,13 @@ $JSON = Get-Content -Path 05-network-parameters.json | ConvertFrom-Json
 
 #Begin gathering parameters
 
-$tier=$JSON.parameters.tier
-$virtualNetworkName=$JSON.parameters.virtualNetworkName
-$vnetAddressPrefix=$JSON.parameters.vnetAddressPrefix
-$bastionAddressPrefix=$JSON.parameters.bastionAddressPrefix
-$azureFirewallSubnetPrefix=$JSON.parameters.azureFirewallSubnetPrefix
-$WorkLoadSubnetPrefix=$JSON.parameters.WorkLoadSubnetPrefix
-$PrivateFirewallIP=$JSON.parameters.PrivateFirewallIP
+$tier=($JSON.parameters.tier).value
+$virtualNetworkName=($JSON.parameters.virtualNetworkName).value
+$vnetAddressPrefix=($JSON.parameters.vnetAddressPrefix).value
+$bastionAddressPrefix=($JSON.parameters.bastionAddressPrefix).value
+$azureFirewallSubnetPrefix=($JSON.parameters.azureFirewallSubnetPrefix).value
+$WorkLoadSubnetPrefix=($JSON.parameters.WorkLoadSubnetPrefix).value
+$PrivateFirewallIP=($JSON.parameters.PrivateFirewallIP).value
 
 Write-Host "The following network is about to be generated:"
 Write-Host "Tier level " $tier
