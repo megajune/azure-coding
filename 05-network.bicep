@@ -171,6 +171,10 @@ resource applicationRuleCollectionGroup 'Microsoft.Network/firewallPolicies/rule
                 protocolType: 'Https'
                 port: 443
               }
+              {
+                protocolType: 'Http'
+                port: 80
+              }
             ]
             targetFqdns: [
               '*.ubuntu.com'
