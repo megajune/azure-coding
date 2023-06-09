@@ -6,7 +6,7 @@
   <p>Before the script...</p>
 
   <script>
-    const password = 'password';
+    const password = "/etc/password";
     alert( 'Hello, world!' );
   </script>
 
