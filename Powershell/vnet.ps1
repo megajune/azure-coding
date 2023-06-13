@@ -35,14 +35,45 @@ $vnet = @{
 }
 $virtualNetwork = New-AzVirtualNetwork @vnet
 
-$subnetnames = 'AzureFirewallSubnet','AzureBastionSubnet','WorkloadSubnet'
+#$subnetnames = 'AzureFirewallSubnet:0','AzureBastionSubnet:16','WorkloadSubnet:128'
 
 
-foreach ($name in $subnetnames){
+<#foreach ($name in $subnetnames){
+    if ($name -eq 'WorkloadSubnet:128') {
+        $subnet = @{
+            Name = 'WorkloadSubnet'
+            VirtualNetwork = $virtualNetwork
+            AddressPrefix = $networkAddressNumber+'.128/25'
+}} else {
+        $subnet = @{
+            Name = ($name -split ':')[0]
+            VirtualNetwork = $virtualNetwork
+            $hostnumber = ($name -split ':')[1]
+            AddressPrefix = $networkAddressNumber+'.'+$hostnumber +'/28'
+    }
+}#>
 $subnet = @{
-    Name = $name
+    Name = 'AzureFirewallSubnet'
     VirtualNetwork = $virtualNetwork
     AddressPrefix = $networkAddressNumber+'.0/28'
 }
+Write-Host $networkAddressNumber
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
+$virtualNetwork | Set-AzVirtualNetwork
+
+$subnet = @{
+    Name = 'AzureBastionSubnet'
+    VirtualNetwork = $virtualNetwork
+    AddressPrefix = $networkAddressNumber+'.16/28'
 }
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
+$virtualNetwork | Set-AzVirtualNetwork
+
+$subnet = @{
+    Name = 'WorkloadSubnet'
+    VirtualNetwork = $virtualNetwork
+    AddressPrefix = $networkAddressNumber+'.128/28'
+}
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
+Write-Host $subnetConfig
+$virtualNetwork | Set-AzVirtualNetwork
