@@ -1,3 +1,6 @@
+param(
+[string]$vnetName
+)
 $rg = Get-AzureRMResourceGroup
 
 <#param (
