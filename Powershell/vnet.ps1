@@ -1,4 +1,5 @@
 $rg = Get-AzureRMResourceGroup
+$rg.name
 
 $vnet = @{
     Name = 'vnet-1'
