@@ -21,12 +21,6 @@ if ($AddressPrefix -match '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/\d{1,2}$') {
     break
 }
 
-<#param (
-    [string]$vnetName = "vnet-1",
-    [Parameter(Mandatory=$true)][string]$vnetName
-    #[string]$password = $( Read-Host "Input password, please" )
-)#>
-
 $vnet = @{
     Name = $vnetName
     ResourceGroupName = $rg.ResourceGroupName
@@ -34,24 +28,8 @@ $vnet = @{
     AddressPrefix = $addressPrefix
 }
 $virtualNetwork = New-AzVirtualNetwork @vnet
+$virtualNetwork | Set-AzVirtualNetwork
 
-#$subnetnames = 'AzureFirewallSubnet:0','AzureBastionSubnet:16','WorkloadSubnet:128'
-
-
-<#foreach ($name in $subnetnames){
-    if ($name -eq 'WorkloadSubnet:128') {
-        $subnet = @{
-            Name = 'WorkloadSubnet'
-            VirtualNetwork = $virtualNetwork
-            AddressPrefix = $networkAddressNumber+'.128/25'
-}} else {
-        $subnet = @{
-            Name = ($name -split ':')[0]
-            VirtualNetwork = $virtualNetwork
-            $hostnumber = ($name -split ':')[1]
-            AddressPrefix = $networkAddressNumber+'.'+$hostnumber +'/28'
-    }
-}#>
 $subnet = @{
     Name = 'AzureFirewallSubnet'
     VirtualNetwork = $virtualNetwork
