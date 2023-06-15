@@ -187,34 +187,34 @@ resource applicationRuleCollectionGroup 'Microsoft.Network/firewallPolicies/rule
           }
         ]
       }
-      {
-        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
-        action: {
-          type: 'Allow'
-        }
-        name: 'Global-rules-arc'
-        priority: 1202
-        rules: [
-          {
-            ruleType: 'ApplicationRule'
-            name: 'global-rule-01'
-            protocols: [
-              {
-                protocolType: 'Https'
-                port: 443
-              }
-            ]
-            targetFqdns: [
-              'www.microsoft.com'
-            ]
-            terminateTLS: false
-            sourceIpGroups: [
-              workloadIpGroup.id
-              infraIpGroup.id
-            ]
-          }
-        ]
-      }
+//      {
+//        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
+//        action: {
+//          type: 'Allow'
+//        }
+//        name: 'Global-rules-arc'
+//        priority: 1202
+//        rules: [
+//          {
+//            ruleType: 'ApplicationRule'
+//            name: 'global-rule-01'
+//            protocols: [
+//              {
+//                protocolType: 'Https'
+//                port: 443
+//              }
+//            ]
+//            targetFqdns: [
+//              'www.microsoft.com'
+//            ]
+//            terminateTLS: false
+//            sourceIpGroups: [
+//              workloadIpGroup.id
+//              infraIpGroup.id
+//            ]
+//          }
+//        ]
+//      }
     ]
   }
 }
