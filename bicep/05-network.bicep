@@ -52,7 +52,8 @@ resource workloadIpGroup 'Microsoft.Network/ipGroups@2022-01-01' = {
   location: location
   properties: {
     ipAddresses: [
-      '10.10.0.128/26'
+      //'10.10.0.128/26'
+      WorkLoadSubnetPrefix
     ]
   }
 }
@@ -62,8 +63,10 @@ resource infraIpGroup 'Microsoft.Network/ipGroups@2022-01-01' = {
   location: location
   properties: {
     ipAddresses: [
-      '10.10.0.64/26'
-      '10.10.0.0/26'
+      bastionAddressPrefix
+      azureFirewallSubnetPrefix
+      //'10.10.0.64/26'
+      //'10.10.0.0/26'
     ]
   }
 }
