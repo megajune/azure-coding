@@ -9,20 +9,20 @@
         "value": "db-vnet"
       },
       "vnetAddressPrefix": {
-        "value": "10.9.0.0/24"
+        "value": "10.10.1.0/24"
       },
       "bastionAddressPrefix": {
-        "value": "10.9.0.64/26"
+        "value": "10.10.1.64/26"
       },
       "azureFirewallSubnetPrefix": {
-        "value": "10.9.0.0/26"
+        "value": "10.10.1.0/26"
       },
       "WorkLoadSubnetPrefix": {
-        "value": "10.9.0.128/25"
+        "value": "10.10.1.128/25"
       }
       ,
       "PrivateFirewallIP": {
-        "value": "10.9.0.4"
+        "value": "10.10.1.4"
       }
     }
   }

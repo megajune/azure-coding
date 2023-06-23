@@ -266,7 +266,7 @@ var routeTables = [
       {
         name: 'internalRouteToVwan'
         properties: {
-          addressPrefix: '10.0.0.0/8'
+          addressPrefix: '10.10.0.0/16'
           nextHopType: 'VirtualAppliance' //If firewall
           nextHopIpAddress: PrivateFirewallIP 
         }
