@@ -187,34 +187,6 @@ resource applicationRuleCollectionGroup 'Microsoft.Network/firewallPolicies/rule
           }
         ]
       }
-//      {
-//        ruleCollectionType: 'FirewallPolicyFilterRuleCollection'
-//        action: {
-//          type: 'Allow'
-//        }
-//        name: 'Global-rules-arc'
-//        priority: 1202
-//        rules: [
-//          {
-//            ruleType: 'ApplicationRule'
-//            name: 'global-rule-01'
-//            protocols: [
-//              {
-//                protocolType: 'Https'
-//                port: 443
-//              }
-//            ]
-//            targetFqdns: [
-//              'www.microsoft.com'
-//            ]
-//            terminateTLS: false
-//            sourceIpGroups: [
-//              workloadIpGroup.id
-//              infraIpGroup.id
-//            ]
-//          }
-//        ]
-//      }
     ]
   }
 }
@@ -298,35 +270,7 @@ var routeTables = [
           nextHopType: 'VirtualAppliance' //If firewall
           nextHopIpAddress: PrivateFirewallIP 
         }
-      }
-//      {
-//        name: 'routetoDBTier'
-//        properties: {
-//          addressPrefix: '10.0.5.0/24'
-//          nextHopType: 'VirtualAppliance' //If firewall
-//          nextHopIpAddress: '10.0.2.4' 
-//        }
-//      }      
-//      {
-//        name: 'udr-cloudninjawebiste-001'
-//        properties: {
-//          addressPrefix: '185.20.205.57/32'
-//          nextHopType: 'Internet'
-//        }
-//      }
-//    ]
-//  }
-//  {
-//    name: 'rt-domainservices-routes'
-//    routes: [
-//      {
-//        name: 'udr-forcedtunneling-001'
-//        properties: {
-//          addressPrefix: '0.0.0.0/0'
-//          nextHopType: 'VirtualNetworkGateway' //If VPN
-//          nextHopIpAddress: '10.0.2.4'
-//        }
-//      }      
+      }    
     ]
   }    
 ]
