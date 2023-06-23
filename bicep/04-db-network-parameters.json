@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "tier": {
+        "value": "db-"
+      },
+      "virtualNetworkName": {
+        "value": "db-vnet"
+      },
+      "vnetAddressPrefix": {
+        "value": "10.9.0.0/24"
+      },
+      "bastionAddressPrefix": {
+        "value": "10.9.0.64/26"
+      },
+      "azureFirewallSubnetPrefix": {
+        "value": "10.9.0.0/26"
+      },
+      "WorkLoadSubnetPrefix": {
+        "value": "10.9.0.128/25"
+      }
+      ,
+      "PrivateFirewallIP": {
+        "value": "10.9.0.4"
+      }
+    }
+  }

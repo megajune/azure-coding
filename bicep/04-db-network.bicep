@@ -8,7 +8,7 @@ param virtualNetworkName string = '${tier}vnet'
 param firewallName string = '${tier}fw'
 
 @description('The address prefix to use for the Bastion subnet. Change this for each environment')
-param bastionAddressPrefix string// = '10.10.0.64/26'
+param bastionAddressPrefix string
 param BastionSubnet string = 'AzureBastionSubnet'
 
 @description('Number of public IP addresses for the Azure Firewall')
@@ -52,7 +52,6 @@ resource workloadIpGroup 'Microsoft.Network/ipGroups@2022-01-01' = {
   location: location
   properties: {
     ipAddresses: [
-      //'10.10.0.128/26'
       WorkLoadSubnetPrefix
     ]
   }
@@ -65,8 +64,6 @@ resource infraIpGroup 'Microsoft.Network/ipGroups@2022-01-01' = {
     ipAddresses: [
       bastionAddressPrefix
       azureFirewallSubnetPrefix
-      //'10.10.0.64/26'
-      //'10.10.0.0/26'
     ]
   }
 }
@@ -106,7 +103,7 @@ resource networkRuleCollectionGroup 'Microsoft.Network/firewallPolicies/ruleColl
         rules: [
           {
             ruleType: 'NetworkRule'
-            name: 'time-windows'
+            name: 'time-windows-sample-rule'
             ipProtocols: [
               'UDP'
             ]
@@ -146,7 +143,7 @@ resource applicationRuleCollectionGroup 'Microsoft.Network/firewallPolicies/rule
         rules: [
           {
             ruleType: 'ApplicationRule'
-            name: 'winupdate-rule-01'
+            name: 'winupdate-rule-01-sample-rule'
             protocols: [
               {
                 protocolType: 'Https'
@@ -168,7 +165,7 @@ resource applicationRuleCollectionGroup 'Microsoft.Network/firewallPolicies/rule
           }
           {
             ruleType: 'ApplicationRule'
-            name: 'Update-Ubuntu'
+            name: 'Update-Ubuntu-sample-rule'
             protocols: [
               {
                 protocolType: 'Https'
@@ -269,7 +266,7 @@ var routeTables = [
       {
         name: 'internalRouteToVwan'
         properties: {
-          addressPrefix: '10.10.0.0/16'
+          addressPrefix: '10.0.0.0/8'
           nextHopType: 'VirtualAppliance' //If firewall
           nextHopIpAddress: PrivateFirewallIP 
         }
