@@ -18,4 +18,3 @@ sudo systemctl status docker
 
 #apt-get install resolvconf
 
-#location of Nessus in Docker = docker.io/tenable/nessus:latest-ubuntu
