@@ -26,7 +26,7 @@ param availabilityZones array = []
 param location string = resourceGroup().location
 param infraIpGroupName string = '${tier}infra-ipgroup-${uniqueString(resourceGroup().id)}'
 param workloadIpGroupName string = '${tier}workload-ipgroup-${uniqueString(resourceGroup().id)}'
-param containerIpGroupName string = '${tier}workload-ipgroup-${uniqueString(resourceGroup().id)}'
+param containerIpGroupName string = '${tier}container-ipgroup-${uniqueString(resourceGroup().id)}'
 param firewallPolicyName string = '${tier}${firewallName}-firewallPolicy'
 
 param vnetAddressPrefix string
