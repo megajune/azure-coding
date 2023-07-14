@@ -26,6 +26,7 @@ param availabilityZones array = []
 param location string = resourceGroup().location
 param infraIpGroupName string = '${tier}infra-ipgroup-${uniqueString(resourceGroup().id)}'
 param workloadIpGroupName string = '${tier}workload-ipgroup-${uniqueString(resourceGroup().id)}'
+param containerIpGroupName string = '${tier}workload-ipgroup-${uniqueString(resourceGroup().id)}'
 param firewallPolicyName string = '${tier}${firewallName}-firewallPolicy'
 
 param vnetAddressPrefix string
@@ -56,6 +57,16 @@ resource workloadIpGroup 'Microsoft.Network/ipGroups@2022-01-01' = {
   properties: {
     ipAddresses: [
       WorkLoadSubnetPrefix
+    ]
+  }
+}
+
+resource containerIpGroup 'Microsoft.Network/ipGroups@2022-01-01' = {
+  name: containerIpGroupName
+  location: location
+  properties: {
+    ipAddresses: [
+      ContainerSubnetPrefix
     ]
   }
 }
