@@ -22,7 +22,7 @@
       }
       ,
       "PrivateFirewallIP": {
-        "value": "10.0.2.4"
+        "value": "10.0.0.4"
       }
     }
   }
