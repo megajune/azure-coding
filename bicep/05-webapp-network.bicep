@@ -11,6 +11,9 @@ param firewallName string = '${tier}fw'
 param bastionAddressPrefix string
 param BastionSubnet string = 'AzureBastionSubnet'
 
+param ContainerSubnetPrefix string
+var ContainerSubnetName = 'ContainerSubnet'
+
 @description('Number of public IP addresses for the Azure Firewall')
 @minValue(1)
 @maxValue(100)
@@ -234,6 +237,13 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: WorkLoadSubnetName
         properties: {
           addressPrefix: WorkLoadSubnetPrefix
+          privateEndpointNetworkPolicies: 'Enabled'
+        }
+      }
+      {
+        name: ContainerSubnetName
+        properties: {
+          addressPrefix: ContainerSubnetPrefix
           privateEndpointNetworkPolicies: 'Enabled'
         }
       }

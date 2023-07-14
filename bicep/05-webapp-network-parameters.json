@@ -17,6 +17,9 @@
       "azureFirewallSubnetPrefix": {
         "value": "10.0.0.0/26"
       },
+      "ContainerSubnetPrefix": {
+        "value": "10.0.0.128/26"
+      },
       "WorkLoadSubnetPrefix": {
         "value": "10.0.1.0/24"
       }
